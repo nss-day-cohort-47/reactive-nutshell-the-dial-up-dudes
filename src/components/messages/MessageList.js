@@ -9,6 +9,9 @@ export const MessageList = () => {
 
   const history = useHistory()
 
+  const currentUserId = JSON.parse(sessionStorage.getItem("nutshell_user"))
+  console.log('currentUserId', currentUserId)
+
   const getMessage = () => {
 
     return getAllMessages().then(message => {
