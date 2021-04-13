@@ -6,12 +6,12 @@ export const getAllTasks = () => {
 }
 
 export const deleteTask = (id) => {
-    return fetch(`${remoteURL}/tasks${id}`), {
-        method: DELETE
-    }.then(response => response.json())
+    return fetch(`${remoteURL}/tasks${id}`, {
+        method: "DELETE"
+    }).then(response => response.json())
 }
 
 export const getUserTasks = (id) => {
-    return fetch(`${remoteURL}/${id}tasks?_embed=tasks`)
+    return fetch(`${remoteURL}/users/${id}?_embed=tasks`)
     .then(response => response.json())
 }
