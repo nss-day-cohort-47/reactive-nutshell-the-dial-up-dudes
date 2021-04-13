@@ -75,3 +75,32 @@ You will be using [session storage](https://javascript.info/localstorage#session
    * Short paragraphs
    * Bulleted lists
 7. Strive for consistency.
+
+### Story
+
+## As a user, I should be able to:
+
+1.  add other users as friends so they can view my information
+
+1.  remove someone from my friends list
+
+1.  list interesting news articles on my dashboard
+
+1.  enter in an event that will happen at a future date, and when that event is next on the agenda, it should be more prominent in the application
+
+1. enter in a task name, and an expected completion date, and be able to mark them as complete
+
+1.  activate my account and chat with other users. All messages are public (like a message board), which means that all users can see them.
+
+1.  modify a news article that I previously created
+
+1.  modify an event that I previously created
+
+1.  modify a task that I previously created
+
+1.  modify a message that I previously posted
+
+1.  send a message that only a specific user can see
+
+1.  see the weather for today, or for a specific event
+
