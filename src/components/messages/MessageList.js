@@ -7,12 +7,12 @@ export const MessageList = () => {
 
   const [ messages, setMessages ] = useState([])
 
+
   const history = useHistory()
 
   const currentUserId = JSON.parse(sessionStorage.getItem("nutshell_user"))
-  console.log('currentUserId', currentUserId)
 
-  const getMessage = () => {
+  const getMessages = () => {
 
     return getAllMessages().then(message => {
       setMessages(message)
@@ -20,13 +20,21 @@ export const MessageList = () => {
   }
 
   useEffect(() => {
-    getMessage()
+    getMessages()
   }, [])
 
   const handleDeleteMessage = (id) => {
     deleteMessage(id)
       .then(() => getAllMessages().then(setMessages))
   }
+
+  const fromUser = (message) => {
+    const userBoolean = currentUserId === message.userId ? true : false;
+
+    return userBoolean
+  }
+
+
 
   return (
     <>
@@ -36,6 +44,7 @@ export const MessageList = () => {
             <MessageCard
               key={ message.id }
               message={ message }
+              fromUser={ fromUser(message) }
             />) }
         </div>
       </section>
