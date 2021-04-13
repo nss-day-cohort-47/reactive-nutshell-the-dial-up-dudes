@@ -24,4 +24,18 @@ export const MessageList = () => {
     deleteMessage(id)
       .then(() => getAllMessages().then(setMessages))
   }
+
+  return (
+    <>
+      <section className='messages__content'>
+        <div className='message__content-container'>
+          { messages.map(message =>
+            <MessageCard
+              key={ message.id }
+              message={ message }
+            />) }
+        </div>
+      </section>
+    </>
+  )
 }
