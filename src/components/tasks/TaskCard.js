@@ -10,7 +10,6 @@ export const TaskCard = ({task, handleDeleteTasks}) => {
                 <div className="tasks">
                     <div className="task">
                         <h3>Task: <span className="card-task"> {task.task}</span></h3>
-                        <p>Start Date: {task.startDate}</p>
                         <p>Completion Date: {task.completionDate}</p>
                         <button type="button" onClick={() => handleDeleteTasks(task.id)}>Delete</button>
                         <input type="checkbox"></input>
