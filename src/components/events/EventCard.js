@@ -11,6 +11,9 @@ export const EventCard = ({ event, handleDeleteEvent }) => {
           <p>Date: {event.date}</p>
           <p>Location: {event.location}</p>
           <button type="button" onClick={() => handleDeleteEvent(event.id)}>Delete</button>
+          <button type="button" onClick={() => history.pushState(`/events/${event.id}/edit`)}>
+            Edit
+          </button>
         </div>
       </div>
     );

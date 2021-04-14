@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react" 
 import { useHistory, useParams } from "react-router"
-import EventDataManager from "../../modules/EventDataManager"
 import "./EventForm.css"
 
 export const EventEditForm = () => {
     const [event, setEvent] = useState({ name: "", date: "", location: "" })
     const [isLoading, setIsLoading] = useState(false);
 
-    const {id} = useParams();
+    const {eventId} = useParams();
     const history = useHistory();
 
     const handleFieldChange = evt => {
@@ -33,7 +32,7 @@ export const EventEditForm = () => {
     }
 
     useEffect(() => {
-        EventDataManager.getEventById(id)
+        EventDataManager.getEventById(eventId)
         .then(event => {
             setEvent(event);
             setIsLoading(false);
@@ -42,14 +41,49 @@ export const EventEditForm = () => {
 
     return (
         <>
-        <form>
+          <form>
             <fieldset>
-                <div>
-                    <input
-                    
-                    />
-                </div>
+              <div className="formgrid">
+                <input
+                  type="text"
+                  required
+                  className="form-control"
+                  onChange={handleFieldChange}
+                  id="name"
+                  value={event.name}
+                />
+                <label htmlFor="name">Event name</label>
+    
+                <input
+                  type="text"
+                  required
+                  className="form-control"
+                  onChange={handleFieldChange}
+                  id="date"
+                  value={event.date}
+                />
+                <label htmlFor="date">Date</label>
+
+                <input
+                  type="text"
+                  required
+                  className="form-control"
+                  onChange={handleFieldChange}
+                  id="location"
+                  value={event.location}
+                />
+                <label htmlFor="location">Location Name</label>
+
+              </div>
+              <div className="alignLeft">
+                <button
+                  type="button" disabled={isLoading}
+                  onClick={updateExistingEvent}
+                  className="btn btn-primary"
+                >Save</button>
+              </div>
             </fieldset>
-        </form>
-    )
-}
+          </form>
+        </>
+      );
+    }
