@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { getAllMessages, writeMessage } from '../../modules/MessageDataManager'
 import './Message.css'
 
-export const SendMessage = ({ userId }) => {
+export const SendMessage = ({ userId, getMessages }) => {
   // console.log('currentUserId', userId)
   const [ message, setMessage ] = useState({
     message: '',
@@ -40,9 +40,11 @@ export const SendMessage = ({ userId }) => {
   const handleClickSaveMessage = (e) => {
     e.preventDefault()
     setIsLoading(true)
-
-    writeMessage(message)
-      .then(() => history.push('/messages'))
+    let completeMessage = { ...message }
+    completeMessage.timestamp = Date.now
+    writeMessage(completeMessage)
+      .then(() => getMessages()
+      )
   };
 
   return (
