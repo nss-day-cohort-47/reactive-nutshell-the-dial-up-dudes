@@ -1,13 +1,15 @@
 .message__left {
   display: flex;
   align-self: flex-start;
-  border: 5px solid purple;
+  /* border: 5px solid purple; */
 }
 
 .message__right {
   display: flex;
   justify-items: flex-end;
-  border: 5px solid green
+  justify-content: flex-end;
+  align-self: flex-end;
+  /* border: 5px solid red */
 }
 
 .messages__content {
@@ -15,8 +17,9 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: 5px red solid;
+  /* border: 5px blue solid; */
   max-width: 500px;
+  padding-bottom: 75px;
 }
 
 .message__send-container {

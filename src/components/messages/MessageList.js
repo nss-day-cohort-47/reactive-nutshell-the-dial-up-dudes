@@ -23,19 +23,6 @@ export const MessageList = () => {
     getMessages()
   }, [])
 
-  // useEffect(() => {
-  //   getAllMessages()
-  //     .then(res => {
-  //       setMessages({
-  //         message: res.message,
-  //         userId: res.userId,
-  //         receiverId: res.receiverId,
-  //         timestamp: res.timestamp
-  //       })
-  //       setIsLoading(false)
-  //     })
-  // }, [])
-
   const handleDeleteMessage = (id) => {
     deleteMessage(id)
       .then(() => getAllMessages().then(setMessages))

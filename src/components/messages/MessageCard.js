@@ -7,10 +7,17 @@ export const MessageCard = ({ message, fromUser }) => {
   fromUser ? messageClass = 'message__right' : messageClass = 'message__left'
 
   return (
-    <section className='message__card'>
-      <div className={ messageClass }>
-        <b>{ message.user.name }</b> <br />: { message.message }
-      </div>
-    </section>
+    fromUser ?
+      <section className='message__card'>
+        <div className='message__right'>
+          <h4>{ message.message } <b>{ message.user.name }</b></h4>
+        </div>
+      </section> :
+      <section className='message__card'>
+        <div className='message__left'>
+          <h4><b>{ message.user.name }</b> { message.message }</h4>
+        </div>
+      </section>
+
   )
 }
