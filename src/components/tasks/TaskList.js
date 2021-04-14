@@ -17,7 +17,7 @@ export const TaskList = () => {
         .then(() => getAllTasks().then(setTasks));
     }
 
-    // const history = useHistory();
+    const history = useHistory();
 
     useEffect(() => {
         getTasks();
@@ -25,6 +25,13 @@ export const TaskList = () => {
 
     return (
         <>
+                    <section className="section-content">
+                <button type="button"
+                    className="btn"
+                    onClick={() => { history.push("/tasks/create") }}>
+                    New Task
+        </button>
+            </section>
         <div className="container-cards">
             {tasks.map(task =>
                 <TaskCard key={task.id} task={task} handleDeleteTasks={handleDeleteTasks} />
