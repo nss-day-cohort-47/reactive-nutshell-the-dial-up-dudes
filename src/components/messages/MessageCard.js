@@ -4,8 +4,6 @@ import './Message.css'
 export const MessageCard = ({ message, fromUser }) => {
   let messageClass = 'message__left'
 
-  console.log('test', message)
-
   fromUser ? messageClass = 'message__right' : messageClass = 'message__left'
 
   return (

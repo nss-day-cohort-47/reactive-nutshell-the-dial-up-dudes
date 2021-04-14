@@ -19,6 +19,7 @@ export const SendMessage = ({ userId, getMessages }) => {
   const handleControlledInputChange = (e) => {
     const newMessage = { ...message }
     let selectedVal = e.target.value
+    // console.log('selected val', selectedVal)
 
     if (e.target.id.includes('Id')) {
       selectedVal = parseInt(selectedVal)
@@ -41,10 +42,18 @@ export const SendMessage = ({ userId, getMessages }) => {
     e.preventDefault()
     setIsLoading(true)
     let completeMessage = { ...message }
-    completeMessage.timestamp = Date.now
+    completeMessage.timestamp = Date.now()
     writeMessage(completeMessage)
-      .then(() => getMessages()
-      )
+    getMessages()
+      .then(() => {
+        setMessage({
+          message: '',
+          timestamp: '',
+          userId: userId,
+          receiverId: ''
+        })
+      }
+      ).then(setIsLoading(false))
   };
 
   return (
