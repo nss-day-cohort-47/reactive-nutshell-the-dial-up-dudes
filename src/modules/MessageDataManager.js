@@ -15,3 +15,13 @@ export const getUserMessages = (id) => {
   return fetch(`${ remoteURL }/${ id }?_embed=messages`)
     .then(res => res.json())
 }
+
+export const writeMessage = (newMessage) => {
+  return fetch(`${ remoteURL }/messages`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newMessage)
+  }).then(res => res.json())
+}

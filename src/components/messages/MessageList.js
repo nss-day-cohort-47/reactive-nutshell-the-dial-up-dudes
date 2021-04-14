@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { deleteMessage, getAllMessages, getUserMessages } from '../../modules/MessageDataManager'
 import { MessageCard } from './MessageCard'
+import { SendMessage } from "./MessageSend"
 
 export const MessageList = () => {
 
@@ -46,6 +47,11 @@ export const MessageList = () => {
               message={ message }
               fromUser={ fromUser(message) }
             />) }
+        </div>
+        <div className='message__send-container'>
+          <SendMessage
+            userId={ currentUserId }
+          />
         </div>
       </section>
     </>
