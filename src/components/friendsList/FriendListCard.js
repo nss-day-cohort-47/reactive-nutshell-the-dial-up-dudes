@@ -3,17 +3,17 @@ import "./FriendList.css";
 import { Link } from "react-router-dom";
 import { firstLetterCase} from "../../modules/helpers";
 
-export const FriendsListCard = ({ friends}) => {
-    return(
+export const FriendListCard = ({ friend}) => {
+    return (
         <div className= "friend_card">
             <div className= "friendcard_content">
                 <picture>
-                    <img src={require('./images/AutumnF').default} alt="Autumn"/>
+                    <img src={require('./AutumnF.png').default} alt="Autumn"/>
                 </picture>
                 <h3> Name: <span className="card-friendname">
-                    {firstLetterCase(friends.name)}
+                    {firstLetterCase(friend.name)}
                     </span></h3>
-                    <Link to={`/friends/${friends.userId}`}></Link>
+                    <Link to={`/friends/${friend.userId}`}></Link>
                     <button className="addfriend">Add Friend</button>
               </div>
         </div>

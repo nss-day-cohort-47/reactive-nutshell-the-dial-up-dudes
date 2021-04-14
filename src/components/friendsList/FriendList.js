@@ -29,7 +29,7 @@ export const FriendList = () => {
         <section className= "friendsection-content">
             <button type="button"
             className="btn"
-            onClick={() =>{history.push("/friends/create")}}> Admit Friend</button>
+            onClick={() =>{history.push("/friends/create")}}> Add Friend</button>
         </section>
         <div className="container-friendcards">
             {friends.map(friend =>
