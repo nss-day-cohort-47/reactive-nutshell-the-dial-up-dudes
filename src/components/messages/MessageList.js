@@ -58,13 +58,13 @@ export const MessageList = () => {
               fromUser={ fromUser(message) }
             />) }
         </div>
-        <div className='message__send-container'>
-          <SendMessage
-            userId={ currentUserId }
-            getMessages={ getMessages }
-          />
-        </div>
       </section>
+      <div className='message__send-container'>
+        <SendMessage
+          userId={ currentUserId }
+          getMessages={ getMessages }
+        />
+      </div>
     </>
   )
 }

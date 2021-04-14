@@ -30,14 +30,6 @@ export const SendMessage = ({ userId, getMessages }) => {
     setMessage(newMessage)
   }
 
-  // useEffect(() => {
-  //   getAllMessages()
-  //     .then(message => {
-  //       setMessage(message)
-  //       setIsLoading(false)
-  //     })
-  // })
-
   const handleClickSaveMessage = (e) => {
     e.preventDefault()
     setIsLoading(true)

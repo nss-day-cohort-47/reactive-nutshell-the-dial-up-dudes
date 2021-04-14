@@ -9,7 +9,7 @@ export const MessageCard = ({ message, fromUser }) => {
   return (
     <section className='message__card'>
       <div className={ messageClass }>
-        <b>{ message.user.name }</b>: { message.message }
+        <b>{ message.user.name }</b> <br />: { message.message }
       </div>
     </section>
   )

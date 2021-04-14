@@ -1,7 +1,25 @@
 .message__left {
-  text-align: left;
+  display: flex;
+  align-self: flex-start;
+  border: 5px solid purple;
 }
 
 .message__right {
-  text-align: right;
+  display: flex;
+  justify-items: flex-end;
+  border: 5px solid green
+}
+
+.messages__content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 5px red solid;
+  max-width: 500px;
+}
+
+.message__send-container {
+  position: fixed;
+  bottom: 0;
 }
