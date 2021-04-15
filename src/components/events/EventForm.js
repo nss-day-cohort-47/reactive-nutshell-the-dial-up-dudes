@@ -14,26 +14,34 @@ export const EventForm = () => {
 
 	const history = useHistory();
 
-	const handleControlledInputChange = (event) => {
+	const handleControlledInputChange = (evt) => {
 	
 		const newEvent = { ...event }
-		let selectedVal = event.target.value
+		let selectedVal = evt.target.value
 
-		if (event.target.id.includes("Id")) {
+		if (evt.target.id.includes("Id")) {
 			selectedVal = parseInt(selectedVal)
 		}
 
-		newEvent[event.target.id] = selectedVal
+		newEvent[evt.target.id] = selectedVal
 
 		setEvent(newEvent)
 	}
 
-	const handleClickSaveEvent = (newEvent) => {
-	//	event.preventDefault() 
+	useEffect(() => {
 
-			addEvent(newEvent)
-				.then(() => history.push("/events"))
-		}
+    }, []);
+
+    const handleClickSaveEvent = (evt) => {
+        evt.preventDefault()
+        const newEventObject = {
+            name: event.name,
+            date: event.date,
+			location: event.location
+        }
+        addEvent(newEventObject)
+        .then(() => history.push("/events"))
+    }
 
 	return (
 		<form className="eventsForm">
@@ -47,13 +55,13 @@ export const EventForm = () => {
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Event date:</label>
-					<input type="text" id="address" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event Date" value={event.date} />
+					<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event Date" value={event.date} />
 				</div>
 			</fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Event location:</label>
-					<input type="text" id="address" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event Location" value={event.location} />
+					<input type="text" id="location" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event Location" value={event.location} />
 				</div>
 			</fieldset>
 			<button className="btn btn-primary"
