@@ -23,7 +23,7 @@ export const FriendList = () => {
     useEffect(() => {
         getFriend();
     }, []);
-
+    console.log(friends)
     return(
         <>
         <section className= "friendsection-content">
@@ -35,10 +35,11 @@ export const FriendList = () => {
             {friends.map(friend =>
                 <FriendListCard
                 key= {friend.userId}
-                friend= {friends}
+                friend= {friend}
                 handleDeleteFriend = {handleDeleteFriend}
-               /> )
-               }
+                /> )
+            }
+            
     </div>
     </>
     );
