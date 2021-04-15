@@ -26,15 +26,15 @@ export const addTasks = (newTask) => {
     }).then(response => response.json)
 }
 
-// export const updateTask = (editedTask) => {
-//     return fetch(`${remoteURL}/tasks/${editedTask.id}`, {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(newTask)
-//     }).then(data => data.json())
-// }
+export const updateTask = (editedTask) => {
+    return fetch(`${remoteURL}/tasks/${editedTask.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newTask)
+    }).then(data => data.json())
+}
 
 // export const checkOffTask = (checkedTask) => {
 //     return fetch(`${remoteURL}/tasks/${checkedTask.taskComplete}`)

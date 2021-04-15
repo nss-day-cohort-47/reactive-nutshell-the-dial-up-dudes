@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import {TaskList} from "./tasks/TaskList"
 import {TaskForm} from "./tasks/TaskForm"
+import {TaskEditForm} from "./tasks/TaskEditForm"
 
 export const ApplicationViews = () => {
   return (
@@ -21,9 +22,9 @@ export const ApplicationViews = () => {
         {/* Render the component for the user's tasks */}
         <TaskList />
       </Route>
-      {/* <Route path="/tasks/:taskId(\d+)/edit">
-        <TaskEdit />
-      </Route> */}
+      <Route path="/tasks/:taskId(\d+)/edit">
+        <TaskEditForm />
+      </Route>
       <Route path="/tasks/create">
         <TaskForm />
       </Route>
