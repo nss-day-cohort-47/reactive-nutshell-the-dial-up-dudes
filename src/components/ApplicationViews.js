@@ -19,9 +19,9 @@ export const ApplicationViews = () => {
         {/* Render the component for list of friends */}
         </Route>
 
-          <Route path="/friends">
-            <FriendListCard />
-          </Route>
+          {/* <Route path="/friends">
+            <FriendList />
+          </Route> */}
 
     
       <Route path="/messages">

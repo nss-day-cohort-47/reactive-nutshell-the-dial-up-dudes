@@ -8,22 +8,24 @@ export const FriendList = () => {
 
     const history= useHistory();
 
+    
+    const handleDeleteFriend = id => {
+        deleteFriend(id)
+        .then(() => getAllFriends().then(setFriends));
+    };
+    
     const getFriend= () => {
         return getAllFriends()
         .then(friendsFromAPI=> {
             setFriends(friendsFromAPI)
         });
     };
-
-    const handleDeleteFriend = userId => {
-        deleteFriend(userId)
-        .then(() => getAllFriends().then(setFriends));
-    };
-
     useEffect(() => {
         getFriend();
     }, []);
-    console.log(friends)
+
+//    console.log("friend",friends)
+
     return(
         <>
         <section className= "friendsection-content">
@@ -34,9 +36,10 @@ export const FriendList = () => {
         <div className="container-friendcards">
             {friends.map(friend =>
                 <FriendListCard
-                key= {friend.userId}
+                key= {friend.id}
                 friend= {friend}
                 handleDeleteFriend = {handleDeleteFriend}
+                user= {friend.user}
                 /> )
             }
             
