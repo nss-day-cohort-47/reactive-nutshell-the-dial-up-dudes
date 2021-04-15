@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { getAllMessages, writeMessage } from '../../modules/MessageDataManager'
 import './Message.css'
 
+// Those things in between the parenthesis and curly braces are props. They've been passed from our parent element. Pretty neat!
 export const SendMessage = ({ userId, getMessages }) => {
   // console.log('currentUserId', userId)
   const [ message, setMessage ] = useState({
@@ -34,6 +35,7 @@ export const SendMessage = ({ userId, getMessages }) => {
     e.preventDefault()
     setIsLoading(true)
     let completeMessage = { ...message }
+    // The line below is setting the timestamp for each message. Should be able to use this method to send private messages...
     completeMessage.timestamp = Date.now()
     writeMessage(completeMessage)
     getMessages()
