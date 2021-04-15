@@ -72,3 +72,13 @@ justify-content: center;
   margin-top: 10px;
 
 }
+
+.message__card a {
+color: red;
+}
+
+.delete__circle {
+  height: 20px;
+  padding: 2px;
+  margin: 0 0 10px 5px;
+}

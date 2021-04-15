@@ -43,6 +43,7 @@ export const MessageList = () => {
               key={ message.id }
               message={ message }
               fromUser={ fromUser(message) }
+              handleDeleteMessage={ handleDeleteMessage }
             />) }
         </div>
       </section>
