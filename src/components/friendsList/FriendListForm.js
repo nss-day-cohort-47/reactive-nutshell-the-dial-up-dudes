@@ -8,7 +8,7 @@ export const FriendForm = () => {
     
     const [friend, setFriend] = useState({});
 
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
     const history = useHistory();
 
@@ -63,13 +63,7 @@ export const FriendForm = () => {
 
                 </div>
             </fieldset>
-            {/* <fieldset>
-                <div>
-                    <label>
-                        <input />
-                    </label>
-                </div>
-            </fieldset> */}
+          
             <button type="button" className="btn btn-primary" onClick={handleClickSaveFriend}>Save Friend</button>
         </form>
     )
