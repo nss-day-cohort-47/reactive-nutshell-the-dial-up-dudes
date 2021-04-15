@@ -4,14 +4,24 @@ import { getAllMessages, writeMessage, getAllUsers } from '../../modules/Message
 import './Message.css'
 
 // Those things in between the parenthesis and curly braces are props. They've been passed from our parent element. Pretty neat!
-export const SendMessage = ({ userId, getMessages }) => {
+export const SendMessage = () => {
   // console.log('currentUserId', userId)
+
+  const userId = JSON.parse(sessionStorage.getItem("nutshell_user"))
+
+
   const [ message, setMessage ] = useState({
     message: '',
     userId: userId,
     receiverId: '',
     timestamp: ''
   })
+
+  const getMessages = () => {
+    return getAllMessages().then(message => {
+      setMessage(message)
+    })
+  }
 
   const [ isLoading, setIsLoading ] = useState(false)
 
@@ -40,19 +50,19 @@ export const SendMessage = ({ userId, getMessages }) => {
 
     // const privateMessage = () => {
     // todo private message filter. Still needs work
-    let receiverId;
-    const privateDM = () => {
-      getAllUsers()
-        .then(allUsers => {
-          allUsers.find(user => {
-            if (completeMessage.message.includes(`@${ user.name }`)) {
-              receiverId = user.id
-            } return receiverId
-          })
-        })
-    }
+    // let receiverId;
+    // const privateDM = () => {
+    //   getAllUsers()
+    //     .then(allUsers => {
+    //       allUsers.find(user => {
+    //         if (completeMessage.message.includes(`@${ user.name }`)) {
+    //           receiverId = user.id
+    //         } return receiverId
+    //       })
+    //     })
+    // }
 
-    privateDM()
+    // privateDM()
     writeMessage(completeMessage)
     getMessages()
       .then(() => {

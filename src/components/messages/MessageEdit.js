@@ -43,11 +43,8 @@ export const MessageEditForm = ({ userId, getMessages }) => {
       })
   })
 
-
   return (
     <>
-      <MessageCard
-        updateExistingMessage={ updateExistingMessage } />
       <form className='messages__input'>
         <fieldset>
           <input type='text' id='message' onChange={ handleFieldChange } required autoFocus className='messages__input-field' placeholder='Edit stuff here...' value={ message.message } />
