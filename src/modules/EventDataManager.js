@@ -26,7 +26,7 @@ export const deleteEvent = (id) => {
     }).then(response => response.json())
   }
 
-  export const updateExistingEvent = (editedEvent) => {
+  export const update = (editedEvent) => {
     return fetch(`${remoteURL}/events/${editedEvent.id}`, {
       method: "PUT",
       headers: {
