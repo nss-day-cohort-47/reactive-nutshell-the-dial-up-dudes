@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useImperativeHandle } from 'react';
 import { useHistory } from 'react-router';
 import { addTasks } from'../../modules/TaskDataManager';
 import {Link} from "react-router-dom"
@@ -6,23 +6,27 @@ import {Link} from "react-router-dom"
 
 export const TaskForm = () => {
 
+    const currentUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
+
     const [task, setTask] = useState({
         task: "",
         completionDate: "",
+        userId: parseInt(currentUser)
     });
+
 
     const [isLoading, setIsLoading] = useState(false);
 
     const history = useHistory();
 
-    const handleControlledInputChange = (event) => {
+    const handleControlledInputChange = (evt) => {
         const newTask = { ...task }
-        let selectedVal = event.target.value
+        let selectedVal = evt.target.value
 
-        if (event.target.id.includes("Id")) {
+        if (evt.target.id.includes("Id")) {
             selectedVal = parseInt(selectedVal)
         }
-        newTask[event.target.id] = selectedVal
+        newTask[evt.target.id] = selectedVal
         setTask(newTask)
     }
 
@@ -34,7 +38,8 @@ export const TaskForm = () => {
         event.preventDefault()
         const newTaskObject = {
             task: task.task,
-            completionDate: task.completionDate
+            completionDate: task.completionDate,
+            userId: task.userId
         }
         addTasks(newTaskObject)
         .then(() => history.push("/tasks"))

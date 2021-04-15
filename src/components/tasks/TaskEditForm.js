@@ -8,7 +8,8 @@ export const TaskEditForm = () => {
 
     const {taskId} = useParams();
     const history = useHistory();
-
+    
+    //as the input field changes this function will update the state
     const handleFieldChange = event => {
         const stateToChange = { ...task };
         stateToChange[event.target.id] = event.target.value;
