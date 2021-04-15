@@ -30,3 +30,14 @@ export const getAllUsers = () => {
   return fetch(`${ remoteURL }/users`)
     .then(res => res.json())
 }
+
+export const editMessage = (editedMessage) => {
+  return fetch(`${ remoteURL }/messages/${ editedMessage.id }`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(editedMessage)
+  }).then(data => data.json())
+}
+
