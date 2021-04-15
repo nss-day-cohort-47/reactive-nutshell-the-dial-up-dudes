@@ -35,7 +35,7 @@ export const TaskEditForm = () => {
     useEffect(() => {
         getUserTasks(taskId)
         .then(task => {
-            setTasks(task);
+            setTask(task);
             setIsLoading(false)
         })
     }, [])
@@ -45,11 +45,11 @@ export const TaskEditForm = () => {
         <form>
             <fieldset>
                 <div className="formgrid">
-                    <input type="text" required className="form-control" onChange={handleFieldChange} id="task" value={task.task}/>
                     <label htmlFor="task">Task</label>
+                    <input type="text" required className="form-control" onChange={handleFieldChange} id="task" value={task.task}/>
 
-                    <input type="date" required className="form-control" onChange={handleFieldChange} id="completionDate" value={task.completionDate} />
                     <label htmlFor="completionDate">Completion Date</label>
+                    <input type="date" required className="form-control" onChange={handleFieldChange} id="completionDate" value={task.completionDate} />
                 </div>
 
                 <div className="alignRight">

@@ -12,7 +12,7 @@ export const deleteTask = (id) => {
 }
 
 export const getUserTasks = (id) => {
-    return fetch(`${remoteURL}/users/${id}?_embed=tasks`)
+    return fetch(`${remoteURL}/users/${id}`)
     .then(response => response.json())
 }
 
@@ -32,7 +32,7 @@ export const updateTask = (editedTask) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(newTask)
+        body: JSON.stringify(editedTask)
     }).then(data => data.json())
 }
 
