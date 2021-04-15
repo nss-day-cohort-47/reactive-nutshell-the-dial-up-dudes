@@ -25,3 +25,8 @@ export const writeMessage = (newMessage) => {
     body: JSON.stringify(newMessage)
   }).then(res => res.json())
 }
+
+export const getAllUsers = () => {
+  return fetch(`${ remoteURL }/users`)
+    .then(res => res.json())
+}

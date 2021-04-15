@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { getAllMessages, writeMessage } from '../../modules/MessageDataManager'
+import { getAllMessages, writeMessage, getAllUsers } from '../../modules/MessageDataManager'
 import './Message.css'
 
 // Those things in between the parenthesis and curly braces are props. They've been passed from our parent element. Pretty neat!
@@ -37,6 +37,26 @@ export const SendMessage = ({ userId, getMessages }) => {
     let completeMessage = { ...message }
     // The line below is setting the timestamp for each message. Should be able to use this method to send private messages...
     completeMessage.timestamp = Date.now()
+
+    // const privateMessage = () => {
+    // todo private message filter. Still needs work
+    let receiverId;
+    const privateDM = () => {
+      getAllUsers()
+        .then(allUsers => {
+          allUsers.find(user => {
+            if (completeMessage.message.includes(`@${ user.name }`)) {
+              receiverId = user.id
+            } return receiverId
+          })
+        })
+    }
+
+
+
+
+
+    privateDM()
     writeMessage(completeMessage)
     getMessages()
       .then(() => {

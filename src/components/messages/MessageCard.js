@@ -19,7 +19,8 @@ export const MessageCard = ({ message, fromUser, handleDeleteMessage }) => {
         </div>
         <div className='message__right-content'>{ message.message }
         </div>
-      </section> :
+      </section>
+      :
       <section className='message__card'>
         <div className='message__left'>
           <h6><b>{ message.user.name }</b></h6>
