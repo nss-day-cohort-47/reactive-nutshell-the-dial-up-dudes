@@ -4,6 +4,7 @@ import { MessageList } from "./messages/MessageList"
 import { TaskList } from "./tasks/TaskList"
 import { TaskForm } from "./tasks/TaskForm"
 import { MessageEditForm } from "./messages/MessageEdit"
+import { MessageSend } from './messages/MessageSend'
 
 export const ApplicationViews = () => {
   return (
@@ -19,9 +20,13 @@ export const ApplicationViews = () => {
         <MessageList />
       </Route>
 
-      <Route path='/messages/:messageId(\d+)edit'>
+      {/* <Route path='/messages/send'>
+        <MessageSend />
+      </Route> */}
+
+      {/* <Route path='/messages/:messageId(\d+)edit'>
         <MessageEditForm />
-      </Route>
+      </Route> */}
 
       <Route exact path="/tasks">
         {/* Render the component for the user's tasks */ }

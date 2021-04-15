@@ -4,10 +4,8 @@ import { getAllMessages, writeMessage, getAllUsers } from '../../modules/Message
 import './Message.css'
 
 // Those things in between the parenthesis and curly braces are props. They've been passed from our parent element. Pretty neat!
-export const SendMessage = () => {
+export const MessageSend = ({ getMessages, userId }) => {
   // console.log('currentUserId', userId)
-
-  const userId = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
 
   const [ message, setMessage ] = useState({
@@ -17,11 +15,7 @@ export const SendMessage = () => {
     timestamp: ''
   })
 
-  const getMessages = () => {
-    return getAllMessages().then(message => {
-      setMessage(message)
-    })
-  }
+
 
   const [ isLoading, setIsLoading ] = useState(false)
 
@@ -78,12 +72,14 @@ export const SendMessage = () => {
 
   return (
     <>
-      <form className='messages__input'>
-        <fieldset>
-          <input type='text' id='message' onChange={ handleControlledInputChange } required autoFocus className='messages__input-field' placeholder='Write stuff here...' value={ message.message } />
-        </fieldset>
-        <button className='message__send btn btn-primary' disabled={ isLoading } type='button' onClick={ handleClickSaveMessage }>Send</button>
-      </form>
+      <div className='message__send-container'>
+        <form className='messages__input'>
+          <fieldset>
+            <input type='text' id='message' onChange={ handleControlledInputChange } required autoFocus className='messages__input-field' placeholder='Write stuff here...' value={ message.message } />
+          </fieldset>
+          <button className='message__send btn btn-primary' disabled={ isLoading } type='button' onClick={ handleClickSaveMessage }>Send</button>
+        </form>
+      </div>
     </>
   )
 

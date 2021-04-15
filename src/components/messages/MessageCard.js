@@ -17,10 +17,10 @@ export const MessageCard = ({ message, fromUser, handleDeleteMessage, updateExis
         <div className='message__right-content'>{ message.message }
         </div>
         <div className='message__edit-delete'>
-          <Link className='delete__me' onClick={ () => handleDeleteMessage(message.id) }>
+          <Link className='delete__me' to={ '/messages/send' } onClick={ () => handleDeleteMessage(message.id) }>
             [ delete ]
           </Link>
-          <Link className='edit__me' onClick={ () => updateExistingMessage(message.id) }>
+          <Link className='edit__me' to={ `/messages/${ message.id }/edit` }>
             [ edit ]
           </Link>
         </div>

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { editMessage, getMessageById } from '../../modules/MessageDataManager'
 import './Message.css'
 import { useHistory, useParams } from 'react-router-dom'
-import { MessageCard } from './MessageCard'
 
-export const MessageEditForm = ({ userId, getMessages }) => {
+export const MessageEdit = ({ userId, getMessages }) => {
   const [ message, setMessage ] = useState({
     message: '',
     userId: userId,
@@ -28,11 +27,13 @@ export const MessageEditForm = ({ userId, getMessages }) => {
     const editedMessage = {
       id: messageId,
       message: message.message,
-      receiverId: message.receiverId
+      userId: message.userId
+      // receiverId: message.receiverId
     }
 
     editMessage(editedMessage)
-      .then(() => history.push('/messages'))
+      .then(() => history.push('/messages/send'))
+      .then(getMessages)
   };
 
   useEffect(() => {
@@ -41,16 +42,18 @@ export const MessageEditForm = ({ userId, getMessages }) => {
         setMessage(message)
         setIsLoading(false)
       })
-  })
+  }, [])
 
   return (
     <>
-      <form className='messages__input'>
-        <fieldset>
-          <input type='text' id='message' onChange={ handleFieldChange } required autoFocus className='messages__input-field' placeholder='Edit stuff here...' value={ message.message } />
-        </fieldset>
-        <button className='message__send btn btn-primary' disabled={ isLoading } type='button' onClick={ updateExistingMessage }>Update</button>
-      </form>
+      <div className='message__send-container'>
+        <form className='messages__input'>
+          <fieldset>
+            <input type='text' id='message' onChange={ handleFieldChange } required autoFocus className='messages__input-field' placeholder='Edit stuff here...' value={ message.message } />
+          </fieldset>
+          <button className='message__send btn btn-primary' disabled={ isLoading } type='button' onClick={ updateExistingMessage }>Update</button>
+        </form>
+      </div>
     </>
   )
 
