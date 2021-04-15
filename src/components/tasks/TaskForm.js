@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { addTasks } from'../../modules/TaskDataManager';
+import {Link} from "react-router-dom"
 
 
 export const TaskForm = () => {
@@ -56,6 +57,9 @@ export const TaskForm = () => {
                     <input type="date" id="completionDate" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Expected Completion-Date" value={task.completionDate} />
                 </div>
             </fieldset>
+            <Link to={`/tasks/`}>
+                <button>Return</button>
+            </Link>
             <button className="btn btn-primary" onClick={handleClickSaveTask}>Save Task</button>
             </form>
     )

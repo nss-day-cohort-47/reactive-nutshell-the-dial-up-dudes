@@ -9,7 +9,7 @@ export const TaskCard = ({task, handleDeleteTasks}) => {
             <div className="card-content">
                 <div className="tasks">
                     <div className="task">
-                        <h3>Task: <span className="card-task"> {task.task}</span></h3>
+                        <h3>To-Do: <span className="card-task"> {task.task}</span></h3>
                         <p>Completion Date: {task.completionDate}</p>
                         <button type="button" onClick={() => handleDeleteTasks(task.id)}>Delete</button>
                         <Link to={`/tasks/${task.id}/edit`}>
