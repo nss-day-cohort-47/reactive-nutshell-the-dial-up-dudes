@@ -8,18 +8,18 @@ export const FriendList = () => {
 
     const history= useHistory();
 
-    
-    const handleDeleteFriend = id => {
-        deleteFriend(id)
-        .then(() => getAllFriends().then(setFriends));
-    };
-    
     const getFriend= () => {
         return getAllFriends()
         .then(friendsFromAPI=> {
             setFriends(friendsFromAPI)
         });
     };
+    
+    const handleDeleteFriend = id => {
+        deleteFriend(id)
+        .then(() => getAllFriends()).then(setFriends)
+    }
+    
     useEffect(() => {
         getFriend();
     }, []);
@@ -39,7 +39,7 @@ export const FriendList = () => {
                 key= {friend.id}
                 friend= {friend}
                 handleDeleteFriend = {handleDeleteFriend}
-                user= {friend.user}
+                // user= {friend.user}
                 /> )
             }
             

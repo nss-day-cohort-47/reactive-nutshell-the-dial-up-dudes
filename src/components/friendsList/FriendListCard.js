@@ -1,13 +1,14 @@
 import React from 'react'
 
-export const FriendListCard = ({ friend, handleDeleteFriend, user }) => {
+export const FriendListCard = ({ friend, handleDeleteFriend }) => {
     return (
         <div className="friend_card">
             <div className="friendcard-content">
+           <div className= "profilepic">{friend.user?.image}</div>
                 <h3 className="friend__name">Name: {friend.user?.name}</h3>
-                <p className="friend__email">Email: {friend.user?.email}</p>
+                
                 <button type="button" onClick={() =>
-                handleDeleteFriend(friend.id)}>Delete Friend</button>
+                handleDeleteFriend(friend.id)}>Baiii</button>
             </div>
         </div>
     )

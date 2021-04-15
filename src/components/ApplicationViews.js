@@ -1,10 +1,10 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import {FriendList} from "./friendsList/FriendList";
-import {FriendListCard} from "./friendsList/FriendListCard";
-import {TaskList} from "./tasks/TaskList"
-import {TaskForm} from "./tasks/TaskForm"
-import { MessageList } from "./messages/MessageList"
+import {FriendForm} from "./friendsList/FriendListForm";
+import {TaskList} from "./tasks/TaskList";
+import {TaskForm} from "./tasks/TaskForm";
+import { MessageList } from "./messages/MessageList";
 
 
 export const ApplicationViews = () => {
@@ -21,9 +21,9 @@ export const ApplicationViews = () => {
         {/* Render the component for list of friends */}
         </Route>
 
-          {/* <Route path="/friends">
-            <FriendList />
-          </Route> */}
+          <Route path="/friends/create">
+            <FriendForm />
+          </Route>
 
     
       <Route path="/messages">
