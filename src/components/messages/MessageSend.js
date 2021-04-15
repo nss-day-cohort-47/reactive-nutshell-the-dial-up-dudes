@@ -54,7 +54,7 @@ export const SendMessage = ({ userId, getMessages }) => {
         <fieldset>
           <input type='text' id='message' onChange={ handleControlledInputChange } required autoFocus className='messages__input-field' placeholder='Write stuff here...' value={ message.message } />
         </fieldset>
-        <button className='btn btn-primary' disabled={ isLoading } type='button' onClick={ handleClickSaveMessage }>Send</button>
+        <button className='message__send btn btn-primary' disabled={ isLoading } type='button' onClick={ handleClickSaveMessage }>Send</button>
       </form>
     </>
   )

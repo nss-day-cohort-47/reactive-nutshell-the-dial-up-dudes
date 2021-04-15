@@ -21,7 +21,7 @@ export const MessageList = () => {
 
   useEffect(() => {
     getMessages()
-  }, [])
+  }, [ messages ])
 
   const handleDeleteMessage = (id) => {
     deleteMessage(id)
