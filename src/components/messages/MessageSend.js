@@ -52,10 +52,6 @@ export const SendMessage = ({ userId, getMessages }) => {
         })
     }
 
-
-
-
-
     privateDM()
     writeMessage(completeMessage)
     getMessages()
