@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Message.css'
 
-export const MessageCard = ({ message, fromUser, handleDeleteMessage }) => {
+
+export const MessageCard = ({ message, fromUser, handleDeleteMessage, updateExistingMessage }) => {
   // let messageClass = 'message__left'
 
   // fromUser ? messageClass = 'message__right' : messageClass = 'message__left'
@@ -19,7 +20,7 @@ export const MessageCard = ({ message, fromUser, handleDeleteMessage }) => {
           <Link className='delete__me' onClick={ () => handleDeleteMessage(message.id) }>
             [ delete ]
           </Link>
-          <Link className='edit__me'>
+          <Link className='edit__me' onClick={ () => updateExistingMessage(message.id) }>
             [ edit ]
           </Link>
         </div>

@@ -41,3 +41,7 @@ export const editMessage = (editedMessage) => {
   }).then(data => data.json())
 }
 
+export const getMessageById = (id) => {
+  return fetch(`${ remoteURL }/messages/${ id }`)
+    .then(res => res.json())
+}

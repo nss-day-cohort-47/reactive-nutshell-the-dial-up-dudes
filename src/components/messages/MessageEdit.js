@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { editMessage } from '../../modules/MessageDataManager'
+import { editMessage, getMessageById } from '../../modules/MessageDataManager'
 import './Message.css'
 import { useHistory, useParams } from 'react-router-dom'
+import { MessageCard } from './MessageCard'
 
-export const MessageEditForm = () => {
-  const [ message, setMessage ] = useState({ message: '' })
+export const MessageEditForm = ({ userId, getMessages }) => {
+  const [ message, setMessage ] = useState({
+    message: '',
+    userId: userId,
+    receiverId: ''
+  })
   const [ isLoading, setIsLoading ] = useState(false)
 
   const { messageId } = useParams()
@@ -30,5 +35,26 @@ export const MessageEditForm = () => {
       .then(() => history.push('/messages'))
   };
 
+  useEffect(() => {
+    getMessageById(messageId)
+      .then(message => {
+        setMessage(message)
+        setIsLoading(false)
+      })
+  })
+
+
+  return (
+    <>
+      <MessageCard
+        updateExistingMessage={ updateExistingMessage } />
+      <form className='messages__input'>
+        <fieldset>
+          <input type='text' id='message' onChange={ handleFieldChange } required autoFocus className='messages__input-field' placeholder='Edit stuff here...' value={ message.message } />
+        </fieldset>
+        <button className='message__send btn btn-primary' disabled={ isLoading } type='button' onClick={ updateExistingMessage }>Update</button>
+      </form>
+    </>
+  )
 
 }

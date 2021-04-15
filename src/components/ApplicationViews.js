@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { MessageList } from "./messages/MessageList"
 import { TaskList } from "./tasks/TaskList"
 import { TaskForm } from "./tasks/TaskForm"
+import { MessageEditForm } from "./messages/MessageEdit"
 
 export const ApplicationViews = () => {
   return (
@@ -16,6 +17,10 @@ export const ApplicationViews = () => {
       </Route>
       <Route path="/messages">
         <MessageList />
+      </Route>
+
+      <Route path='/messages/:messageId(\d+)edit'>
+        <MessageEditForm />
       </Route>
 
       <Route exact path="/tasks">

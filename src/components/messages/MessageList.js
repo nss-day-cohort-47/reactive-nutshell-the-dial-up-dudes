@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { deleteMessage, getAllMessages, getUserMessages } from '../../modules/MessageDataManager'
 import { MessageCard } from './MessageCard'
+import { MessageEditForm } from './MessageEdit'
 import { SendMessage } from "./MessageSend"
 
 export const MessageList = () => {
@@ -47,9 +48,15 @@ export const MessageList = () => {
             />) }
         </div>
       </section>
-      <div className='message__send-container'>
+      {/* <div className='message__send-container'>
         <SendMessage
           // These are props. We can use them to pass stuff to our other components. I think it's pretty awesome!
+          userId={ currentUserId }
+          getMessages={ getMessages }
+        />
+      </div> */}
+      <div className='message__edit-container'>
+        <MessageEditForm
           userId={ currentUserId }
           getMessages={ getMessages }
         />
