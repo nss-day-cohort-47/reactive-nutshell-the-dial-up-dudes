@@ -46,11 +46,12 @@ export const MessageSend = ({ getMessages, userId }) => {
     // todo private message filter. Still needs work
     const privateMessage = () => {
       let recId;
+      const lowerCaseMessage = completeMessage.message.toLocaleLowerCase()
       const privateDM = (
         getAllUsers()
           .then(allUsers => {
             allUsers.map(user => {
-              if (completeMessage.message.includes(`@${ user.name }`)) {
+              if (lowerCaseMessage.includes(`@${ user.name.toLocaleLowerCase() }`)) {
                 recId = user.id
               } if (recId !== undefined) return recId
             })
@@ -59,8 +60,6 @@ export const MessageSend = ({ getMessages, userId }) => {
           }))
       return privateDM
     }
-
-
 
     privateMessage()
       .then((res) => completeMessage.receiverId = res)
