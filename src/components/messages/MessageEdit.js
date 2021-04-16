@@ -48,6 +48,7 @@ export const MessageEdit = ({ userId, getMessages }) => {
         id: messageId,
         message: completeMessage.message,
         userId: completeMessage.userId,
+        timestamp: completeMessage.timestamp,
         receiverId: recId
       }
       return editedMessage

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Message.css'
 
 
-export const MessageCard = ({ message, fromUser, handleDeleteMessage, updateExistingMessage }) => {
+export const MessageCard = ({ message, fromUser, handleDeleteMessage }) => {
   // let messageClass = 'message__left'
 
   // fromUser ? messageClass = 'message__right' : messageClass = 'message__left'
