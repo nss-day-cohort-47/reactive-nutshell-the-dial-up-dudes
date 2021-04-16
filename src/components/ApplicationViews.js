@@ -1,10 +1,13 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { MessageList } from "./messages/MessageList"
+import { EventForm } from "./events/EventForm"
+import { EventList } from "./events/EventList"
+//import { EventEditForm } from "./events/EventEdit"
 import { TaskList } from "./tasks/TaskList"
 import { TaskForm } from "./tasks/TaskForm"
 import { MessageEditForm } from "./messages/MessageEdit"
 import { MessageSend } from './messages/MessageSend'
+import { MessageList } from "./messages/MessageList"
 
 export const ApplicationViews = () => {
   return (
@@ -16,6 +19,7 @@ export const ApplicationViews = () => {
       <Route path="/friends">
         {/* Render the component for list of friends */ }
       </Route>
+
       <Route path="/messages">
         <MessageList />
       </Route>
@@ -32,13 +36,26 @@ export const ApplicationViews = () => {
         {/* Render the component for the user's tasks */ }
         <TaskList />
       </Route>
-      {/* <Route path="/tasks/:taskId(\d+)/edit">
+
+      {/*<Route path="/tasks/:taskId(\d+)/edit">
         <TaskEdit />
       </Route> */}
+
       <Route path="/tasks/create">
         <TaskForm />
       </Route>
 
+      <Route exact path="/events">
+        <EventList />
+      </Route>
+
+      {/*<Route path="/events/:eventId(\d+)/edit">
+          <EventEditForm />
+        </Route>*/}
+
+      <Route path="/events/create">
+        <EventForm />
+      </Route>
 
       <Route path="/events">
         {/* Render the component for the user's events */ }
