@@ -1,5 +1,8 @@
 import React from "react"
+import { updateEvent } from "../../modules/EventDataManager";
 import "./Event.css"
+
+// this is what displays on each individual event (name, date, location, & the buttons)
 
 export const EventCard = ({ event, handleDeleteEvent }) => {
     return (
@@ -11,7 +14,8 @@ export const EventCard = ({ event, handleDeleteEvent }) => {
           <p>Date: {event.date}</p>
           <p>Location: {event.location}</p>
           <button type="button" onClick={() => handleDeleteEvent(event.id)}>Delete</button>
-          { /* <button type="button" onClick={() => handleEditEvent(event.id)}>Edit</button> */}
+          <button type="button" onClick={() => (updateEvent)}>Edit</button>
+          <button type="button" >Show Weather</button>
         </div>
       </div>
     );

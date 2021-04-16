@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react" 
+import { updateEvent, getAllEvents, getEventById } from "../../modules/EventDataManager"
 import { useHistory, useParams } from "react-router"
-import { updateEvent } from "EventDataManager"
 //import "./EventForm.css"
 
 export const EventEditForm = () => {
@@ -16,26 +16,25 @@ export const EventEditForm = () => {
         setEvent(stateToChange);
     };
 
-    const updateExistingEvent = evt => {
+    const updateExistingEvent = (evt) => {
         evt.preventDefault()
         setIsLoading(true);
 
         const editedEvent = {
-            id: props.match.params.id,
             name: event.name,
             date: event.date,
             location: event.location
         };
 
-        EventEditForm.update(editedEvent)
+        updateEvent(editedEvent)
             .then(() => history.push("/events")
         )
     }
 
     useEffect(() => {
-        EventEditForm.getEventById(eventId)
-        .then(evt => {
-            setEvent(evt);
+        getEventById(eventId)
+        .then(event => {
+            setEvent(event);
             setIsLoading(false);
         });
     }, []);

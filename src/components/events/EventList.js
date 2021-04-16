@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EventCard } from './EventCard';
 import { getAllEvents, getEventById, deleteEvent } from '../../modules/EventDataManager';
 import { useHistory } from 'react-router';
+import { EventEditForm } from './EventEdit';
 
 export const EventList = () => {
   const [events, setEvents] = useState([]);

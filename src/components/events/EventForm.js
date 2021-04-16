@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { addEvent } from '../../modules/EventDataManager';
 
+// this is the intial form page
+
 export const EventForm = () => {
 
 	const [event, setEvent] = useState({
