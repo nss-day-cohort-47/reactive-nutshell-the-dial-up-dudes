@@ -29,4 +29,3 @@ export const MessageCard = ({ message, fromUser, handleDeleteMessage }) => {
 
   )
 }
-
