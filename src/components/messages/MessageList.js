@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Route } from 'react-router-dom'
 import { deleteMessage, getAllMessages, getUserMessages } from '../../modules/MessageDataManager'
 import { MessageCard } from './MessageCard'
-import { SendMessage } from "./MessageSend"
+import { MessageSend } from "./MessageSend"
+import { MessageEdit } from './MessageEdit'
 
 export const MessageList = () => {
 
@@ -20,7 +21,7 @@ export const MessageList = () => {
   // This looks for incoming messages and then displays them for you to read.
   useEffect(() => {
     getMessages()
-  }, [ messages ])
+  }, [])
   // We aren't using this yet, but it will allow you to delete your messages if you you have any ragrats. 
   const handleDeleteMessage = (id) => {
     deleteMessage(id)
@@ -47,13 +48,20 @@ export const MessageList = () => {
             />) }
         </div>
       </section>
-      <div className='message__send-container'>
-        <SendMessage
-          // These are props. We can use them to pass stuff to our other components. I think it's pretty awesome!
+      <Route path='/messages/send'>
+        <MessageSend
+          getMessages={ getMessages }
+          userId={ currentUserId }
+        />
+      </Route>
+      <Route path='/messages/:messageId(\d+)/edit'>
+        <MessageEdit
           userId={ currentUserId }
           getMessages={ getMessages }
         />
-      </div>
+
+      </Route>
     </>
   )
+
 }

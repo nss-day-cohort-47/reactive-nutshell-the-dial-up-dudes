@@ -8,14 +8,15 @@ import { MessageList } from "./messages/MessageList";
 import { EventForm } from "./events/EventForm"
 import { EventList } from "./events/EventList"
 //import { EventEditForm } from "./events/EventEdit"
-
+import { MessageEditForm } from "./messages/MessageEdit"
+import { MessageSend } from './messages/MessageSend'
 
 export const ApplicationViews = () => {
   return (
     <>
 
       <Route exact path="/">
-        {/* Render the component for news articles */}
+        {/* Render the component for news articles */ }
       </Route>
 
       <Route path="/friends">
@@ -32,8 +33,16 @@ export const ApplicationViews = () => {
         <MessageList />
       </Route>
 
+      {/* <Route path='/messages/send'>
+        <MessageSend />
+      </Route> */}
+
+      {/* <Route path='/messages/:messageId(\d+)edit'>
+        <MessageEditForm />
+      </Route> */}
+
       <Route exact path="/tasks">
-        {/* Render the component for the user's tasks */}
+        {/* Render the component for the user's tasks */ }
         <TaskList />
       </Route>
 
@@ -58,7 +67,7 @@ export const ApplicationViews = () => {
       </Route>
 
       <Route path="/events">
-        {/* Render the component for the user's events */}
+        {/* Render the component for the user's events */ }
       </Route>
     </>
   )

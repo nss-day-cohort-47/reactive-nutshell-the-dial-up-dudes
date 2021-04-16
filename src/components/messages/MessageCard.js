@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Message.css'
-import deleteButton from './delete-black.png'
+
 
 export const MessageCard = ({ message, fromUser, handleDeleteMessage }) => {
   // let messageClass = 'message__left'
@@ -13,13 +13,19 @@ export const MessageCard = ({ message, fromUser, handleDeleteMessage }) => {
       <section className='message__card'>
         <div className='message__right'>
           <h6><b>{ message.user.name } </b></h6>
-          <Link onClick={ () => handleDeleteMessage(message.id) }>
-            <img className='delete__circle' src={ deleteButton } alt='circle with an x in it' />
-          </Link>
         </div>
         <div className='message__right-content'>{ message.message }
         </div>
-      </section> :
+        <div className='message__edit-delete'>
+          <Link className='delete__me' to={ '/messages/send' } onClick={ () => handleDeleteMessage(message.id) }>
+            [ delete ]
+          </Link>
+          <Link className='edit__me' to={ `/messages/${ message.id }/edit` }>
+            [ edit ]
+          </Link>
+        </div>
+      </section>
+      :
       <section className='message__card'>
         <div className='message__left'>
           <h6><b>{ message.user.name }</b></h6>
