@@ -1,13 +1,15 @@
-import React from "react"
-import { Route } from "react-router-dom"
+import React from "react";
+import { Route } from "react-router-dom";
+import {FriendList} from "./friendsList/FriendList";
+import {FriendForm} from "./friendsList/FriendListForm";
+import {TaskList} from "./tasks/TaskList";
+import {TaskForm} from "./tasks/TaskForm";
+import { MessageList } from "./messages/MessageList";
 import { EventForm } from "./events/EventForm"
 import { EventList } from "./events/EventList"
 //import { EventEditForm } from "./events/EventEdit"
-import { TaskList } from "./tasks/TaskList"
-import { TaskForm } from "./tasks/TaskForm"
 import { MessageEditForm } from "./messages/MessageEdit"
 import { MessageSend } from './messages/MessageSend'
-import { MessageList } from "./messages/MessageList"
 
 export const ApplicationViews = () => {
   return (
@@ -16,8 +18,15 @@ export const ApplicationViews = () => {
       <Route exact path="/">
         {/* Render the component for news articles */ }
       </Route>
+
       <Route path="/friends">
-        {/* Render the component for list of friends */ }
+        {/* Render the component for list of friends */}
+        <FriendList />
+      </Route>
+      
+      <Route path="/friends">
+        {/* Render the component for list of friends */}
+        <FriendForm />
       </Route>
 
       <Route path="/messages">
