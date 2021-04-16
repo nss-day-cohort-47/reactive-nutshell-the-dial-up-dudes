@@ -1,9 +1,11 @@
+
 import React from "react";
 import { Route } from "react-router-dom";
 import {FriendList} from "./friendsList/FriendList";
 import {FriendForm} from "./friendsList/FriendListForm";
 import {TaskList} from "./tasks/TaskList";
 import {TaskForm} from "./tasks/TaskForm";
+import {TaskEditForm} from "./tasks/TaskEditForm"
 import { MessageList } from "./messages/MessageList";
 import { EventForm } from "./events/EventForm"
 import { EventList } from "./events/EventList"
@@ -45,11 +47,9 @@ export const ApplicationViews = () => {
         {/* Render the component for the user's tasks */ }
         <TaskList />
       </Route>
-
-      {/*<Route path="/tasks/:taskId(\d+)/edit">
-        <TaskEdit />
-      </Route> */}
-
+      <Route exact path="/tasks/:taskId(\d+)/edit">
+        <TaskEditForm />
+      </Route>
       <Route path="/tasks/create">
         <TaskForm />
       </Route>
