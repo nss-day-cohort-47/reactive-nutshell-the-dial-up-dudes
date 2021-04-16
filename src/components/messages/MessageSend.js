@@ -42,16 +42,14 @@ export const MessageSend = ({ getMessages, userId }) => {
     // The line below is setting the timestamp for each message. Should be able to use this method to send private messages...
     completeMessage.timestamp = Date.now()
 
-    // const privateMessage = () => {
-    // todo private message filter. Still needs work
     const privateMessage = () => {
       let recId;
-      const lowerCaseMessage = completeMessage.message.toLocaleLowerCase()
+      const lowerCaseMessage = completeMessage.message.toLowerCase()
       const privateDM = (
         getAllUsers()
           .then(allUsers => {
             allUsers.map(user => {
-              if (lowerCaseMessage.includes(`@${ user.name.toLocaleLowerCase() }`)) {
+              if (lowerCaseMessage.includes(`@${ user.name.toLowerCase() }`)) {
                 recId = user.id
               } if (recId !== undefined) return recId
             })

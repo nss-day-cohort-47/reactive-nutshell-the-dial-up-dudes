@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { editMessage, getMessageById } from '../../modules/MessageDataManager'
+import { editMessage, getMessageById, getAllUsers } from '../../modules/MessageDataManager'
 import './Message.css'
 import { useHistory, useParams } from 'react-router-dom'
 
@@ -23,17 +23,43 @@ export const MessageEdit = ({ userId, getMessages }) => {
   const updateExistingMessage = (e) => {
     e.preventDefault()
     setIsLoading(true)
+    let completeMessage = { ...message }
 
-    const editedMessage = {
-      id: messageId,
-      message: message.message,
-      userId: message.userId
-      // receiverId: message.receiverId
+    const privateMessage = () => {
+      let recId;
+      const lowerCaseMessage = completeMessage.message.toLowerCase()
+      const privateDM = (
+        getAllUsers()
+          .then(allUsers => {
+            allUsers.map(user => {
+              if (lowerCaseMessage.includes(`@${ user.name.toLowerCase() }`)) {
+                recId = user.id
+              } if (recId !== undefined) return recId
+            })
+          }).then(() => {
+            return recId
+          }))
+      return privateDM
     }
 
-    editMessage(editedMessage)
-      .then(() => history.push('/messages/send'))
-      .then(getMessages)
+
+    const asynchHell = (recId) => {
+      const editedMessage = {
+        id: messageId,
+        message: completeMessage.message,
+        userId: completeMessage.userId,
+        receiverId: recId
+      }
+      return editedMessage
+    }
+
+    privateMessage()
+      .then(results => asynchHell(results))
+      .then(results =>
+        editMessage(results)
+          .then(() => history.push('/messages/send'))
+          .then(getMessages))
+
   };
 
   useEffect(() => {
