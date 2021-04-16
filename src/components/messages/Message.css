@@ -1,8 +1,10 @@
 .message__left, .message__left-content {
   display: flex;
+  justify-items: flex-start;
+  justify-content: flex-start;
   align-self: flex-start;
-  align-self: flex-end;
-  max-width: 200px;
+  max-width: 350px;
+  width: 200px;
   /* border: 5px solid purple; */
 }
 
@@ -11,10 +13,26 @@
   justify-items: flex-end;
   justify-content: flex-end;
   align-self: flex-end;
-  max-width: 300px;
-  margin-left: 300px;
+  max-width: 350px;
+  width: 200px;
+  /* margin-left: 200px; */
 
   /* border: 5px solid red */
+}
+
+.message__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.message__right {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.message__left {
+  margin-left: 15px;
+  margin-top: 15px;
 }
 
 .message__left-content, .message__right-content {
@@ -34,27 +52,30 @@
 
 .messages__content {
 display: flex;
-justify-content: center;
+justify-content: flex-start;
+margin-left: 20px;
 }
 
 .message__send-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   position: fixed;
   bottom: 0;
   /* background-color: cornsilk; */
-  width: 100%
+  width: 150px;
+  margin-left: 20px;
 }
 
 .messages__input {
   display: flex;
+  /* margin-left: 20px; */
   flex-direction: row;
-  border-left: 5px #c9c8c8 solid;
-  border-right: 5px #c9c8c8 solid;
+  /* border-left: 5px #c9c8c8 solid;
+  border-right: 5px #c9c8c8 solid; */
 }
 
 .messages__input-field {
-  width: 425px;
+  width: 300px;
   height: 50px;
 
 }
@@ -65,20 +86,36 @@ justify-content: center;
   justify-content: center;
   flex-wrap: wrap;
   justify-content: center;
-  border: 5px #c9c8c8 solid;
+  /* border: 5px #c9c8c8 solid; */
   border-radius: 25px;
   max-width: 500px;
   padding: 0 10px 75px 10px;
   margin-top: 10px;
+  width: 400px;
+  min-height: 100%;
 
 }
 
 .message__card a {
-color: red;
+color: rgb(218, 217, 217);
 }
 
-.delete__circle {
+.message__card a:hover {
+  color: red;
+  text-decoration-line: none;
+  }
+
+.message__edit-delete {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+}
+/* .delete__circle {
   height: 20px;
   padding: 2px;
   margin: 0 0 10px 5px;
+} */
+
+.message__send {
+  width: 100px;
 }
