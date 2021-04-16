@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
-import { updateTask, getUserTasks } from "../../modules/TaskDataManager"
+import { updateTask, getTaskById } from "../../modules/TaskDataManager"
 import { useParams, useHistory, Link } from "react-router-dom"
 
 export const TaskEditForm = () => {
 
     const currentUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
-    const [task, setTask] = useState({ task: "", completionDate: ""});
+    const [task, setTask] = useState({ task: "", completionDate: "", taskComplete: false, userId: 0,id: 0});
     const [isLoading, setIsLoading] = useState(false);
 
     const {taskId} = useParams();
@@ -30,7 +30,6 @@ export const TaskEditForm = () => {
             taskComplete: false,
             userId: currentUser
         };
-        console.log(editedTask)
 
         updateTask(editedTask)
         .then(() => history.push("/tasks")
@@ -38,7 +37,7 @@ export const TaskEditForm = () => {
     }
 
     useEffect(() => {
-        getUserTasks(taskId)
+        getTaskById(taskId)
         .then(task => {
             setTask(task);
             setIsLoading(false)

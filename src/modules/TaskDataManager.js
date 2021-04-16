@@ -16,6 +16,10 @@ export const getUserTasks = (userId) => {
     return fetch(`${remoteURL}/tasks?userId=${userId}&_expand=user`)
     .then(response => response.json())
 }
+export const getTaskById = (taskId) => {
+    return fetch(`${remoteURL}/tasks/${taskId}`)
+    .then(response => response.json())
+}
 
 export const addTasks = (newTask) => {
     return fetch(`${remoteURL}/tasks`, {
