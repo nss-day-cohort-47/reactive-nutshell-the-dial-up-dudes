@@ -4,6 +4,7 @@ import { deleteMessage, getAllMessages, getUserMessages } from '../../modules/Me
 import { MessageCard } from './MessageCard'
 import { MessageSend } from "./MessageSend"
 import { MessageEdit } from './MessageEdit'
+import { MessageRecCard } from './MessageRecCard'
 
 export const MessageList = () => {
 
@@ -34,6 +35,15 @@ export const MessageList = () => {
     return userBoolean
   }
 
+  const publicOrPrivate = (message) => {
+    let trueOrFalse = false;
+    if (message.receiverId === currentUserId || message.receiverId === undefined && message.userId != currentUserId) {
+      trueOrFalse = true
+    }
+
+    return trueOrFalse
+  }
+
   // Returns all of the data for us. I then used the classnames to make everything look pretty and stuff. 
   return (
     <>
@@ -45,6 +55,16 @@ export const MessageList = () => {
               message={ message }
               fromUser={ fromUser(message) }
               handleDeleteMessage={ handleDeleteMessage }
+              currentUserId={ currentUserId }
+            />) }
+          { messages.map(message =>
+            <MessageRecCard
+              key={ message.id }
+              message={ message }
+              fromUser={ fromUser(message) }
+              publicOrPrivate={ publicOrPrivate(message) }
+              handleDeleteMessage={ handleDeleteMessage }
+              currentUserId={ currentUserId }
             />) }
         </div>
       </section>
