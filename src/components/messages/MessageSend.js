@@ -44,21 +44,28 @@ export const MessageSend = ({ getMessages, userId }) => {
 
     // const privateMessage = () => {
     // todo private message filter. Still needs work
-    // let receiverId;
-    // const privateDM = () => {
-    //   getAllUsers()
-    //     .then(allUsers => {
-    //       allUsers.find(user => {
-    //         if (completeMessage.message.includes(`@${ user.name }`)) {
-    //           receiverId = user.id
-    //         } return receiverId
-    //       })
-    //     })
-    // }
+    const privateMessage = () => {
+      let recId;
+      const privateDM = (
+        getAllUsers()
+          .then(allUsers => {
+            allUsers.map(user => {
+              if (completeMessage.message.includes(`@${ user.name }`)) {
+                recId = user.id
+              } if (recId !== undefined) return recId
+            })
+          }).then(() => {
+            return recId
+          }))
+      return privateDM
+    }
 
-    // privateDM()
-    writeMessage(completeMessage)
-    getMessages()
+
+
+    privateMessage()
+      .then((res) => completeMessage.receiverId = res)
+      .then(() => writeMessage(completeMessage))
+      .then(getMessages)
       .then(() => {
         setMessage({
           message: '',
