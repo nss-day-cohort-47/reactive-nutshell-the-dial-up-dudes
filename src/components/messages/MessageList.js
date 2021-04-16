@@ -37,7 +37,7 @@ export const MessageList = () => {
 
   const publicOrPrivate = (message) => {
     let trueOrFalse = false;
-    if (message.receiverId === currentUserId || message.receiverId === undefined && message.userId != currentUserId) {
+    if (message.receiverId === currentUserId || message.receiverId === undefined) {
       trueOrFalse = true
     }
 
@@ -61,7 +61,7 @@ export const MessageList = () => {
             <MessageRecCard
               key={ message.id }
               message={ message }
-              fromUser={ fromUser(message) }
+              fromUser={ fromUser }
               publicOrPrivate={ publicOrPrivate(message) }
               handleDeleteMessage={ handleDeleteMessage }
               currentUserId={ currentUserId }
