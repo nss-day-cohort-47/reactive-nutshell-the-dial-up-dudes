@@ -39,6 +39,7 @@ export const TaskForm = () => {
         const newTaskObject = {
             task: task.task,
             completionDate: task.completionDate,
+            taskComplete: false,
             userId: task.userId
         }
         addTasks(newTaskObject)

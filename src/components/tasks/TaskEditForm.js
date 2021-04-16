@@ -3,6 +3,9 @@ import { updateTask, getUserTasks } from "../../modules/TaskDataManager"
 import { useParams, useHistory, Link } from "react-router-dom"
 
 export const TaskEditForm = () => {
+
+    const currentUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
+
     const [task, setTask] = useState({ task: "", completionDate: ""});
     const [isLoading, setIsLoading] = useState(false);
 
@@ -24,9 +27,10 @@ export const TaskEditForm = () => {
             id: taskId,
             task:task.task,
             completionDate: task.completionDate,
-            taskComplete: task.taskComplete,
-            userId: task.userId
+            taskComplete: false,
+            userId: currentUser
         };
+        console.log(editedTask)
 
         updateTask(editedTask)
         .then(() => history.push("/tasks")
