@@ -8,8 +8,8 @@ import { MessageList } from "./messages/MessageList";
 import { EventForm } from "./events/EventForm"
 import { EventList } from "./events/EventList"
 //import { EventEditForm } from "./events/EventEdit"
-import { MessageEditForm } from "./messages/MessageEdit"
-import { MessageSend } from './messages/MessageSend'
+// import { MessageEditForm } from "./messages/MessageEdit"
+// import { MessageSend } from './messages/MessageSend'
 
 export const ApplicationViews = () => {
   return (
