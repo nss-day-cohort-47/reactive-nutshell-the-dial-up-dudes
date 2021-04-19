@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 
-export const TaskCard = ({task, handleDeleteTasks}) => {
+export const TaskCard = ({task, handleDeleteTasks, handleUpdateTask}) => {
     return (
         <aside>
         <div className="cards">
@@ -17,7 +17,7 @@ export const TaskCard = ({task, handleDeleteTasks}) => {
                                 Edit
                             </button>
                         </Link>
-                        <input type="checkbox"></input>
+                        <label htmlFor="checkbox"> Task Complete <input type="checkbox" id="checkbox" name="checkbox" onClick={() => handleUpdateTask(task)} /></label>
                     </div>
                 </div>
             </div>
