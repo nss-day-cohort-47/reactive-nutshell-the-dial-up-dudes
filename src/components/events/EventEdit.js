@@ -1,31 +1,37 @@
 import React, { useState, useEffect } from "react" 
-import { updateEvent, getAllEvents, getEventById } from "../../modules/EventDataManager"
+import { updateEvent, getEventById } from "../../modules/EventDataManager"
 import { useHistory, useParams } from "react-router"
-//import "./EventForm.css"
+import "./Event.css"
 
+// the initial run of the useState function/hook 
 export const EventEditForm = () => {
-    const [event, setEvent] = useState({ name: "", date: "", location: "" })
+    const [event, setEvent] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
+    // returns obj of parameters for route rendered
     const {eventId} = useParams();
+    // allows access to the state of the router to navigate from inside components
     const history = useHistory();
 
+    // this changes and runs the useState function again (newest version, if any)
     const handleFieldChange = (evt) => {
         const stateToChange = { ...event };
         stateToChange[evt.target.id] = evt.target.value;
         setEvent(stateToChange);
     };
 
+    // updates the event & prevents user from clicking the save button multiple times
     const updateExistingEvent = (evt) => {
         evt.preventDefault()
         setIsLoading(true);
-//
+    // this will be the edited version of the event card. each item connects back to the database through dot notation (gets the name, date, & location)
         const editedEvent = {
+            id: eventId,
             name: event.name,
             date: event.date,
             location: event.location
         };
-
+    // 
         updateEvent(editedEvent)
             .then(() => history.push("/events")
         )
