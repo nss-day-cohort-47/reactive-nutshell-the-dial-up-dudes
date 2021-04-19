@@ -32,7 +32,7 @@ export const MessageCard = ({ message, fromUser, handleDeleteMessage, currentUse
   }
 
   publicMessage()
-  console.log('its a mess', publicMess)
+  // console.log('its a mess', publicMess)
 
 
 

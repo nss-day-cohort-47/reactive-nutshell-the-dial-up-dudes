@@ -3,20 +3,13 @@ import { Link } from 'react-router-dom'
 import './Message.css'
 
 
-export const MessageRecCard = ({ message, fromUser, handleDeleteMessage, publicOrPrivate }) => {
-  const userMessages = () => publicOrPrivate ? message : undefined
+export const MessageRecCard = ({ message, fromUser, handleDeleteMessage, messageSorter3000 }) => {
 
-  console.log(userMessages)
+
+  // console.log('theMessage', theMessage)
+
   return (
-    fromUser(userMessages) ?
-      <section className='message__card'>
-        <div className='message__left'>
-          <h6><b>{ message.user.name }</b></h6>
-        </div>
-        <div className='message__left-content'>{ message.message }
-        </div>
-      </section>
-      :
+    fromUser(message) ?
       <section className='message__card'>
         <div className='message__right'>
           <h6><b>{ message.user.name }</b></h6>
@@ -32,6 +25,17 @@ export const MessageRecCard = ({ message, fromUser, handleDeleteMessage, publicO
         </Link>
         </div>
       </section>
+      :
+      <section className='message__card'>
+        <div className='message__left'>
+          <h6><b>{ message.user.name }</b></h6>
+        </div>
+        <div className='message__left-content'>{ message.message }
+        </div>
+      </section>
+
+
+
 
   )
 }
