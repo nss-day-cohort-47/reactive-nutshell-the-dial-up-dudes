@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { TaskCard } from './TaskCard';
-import { getAllTasks, getUserTasks, deleteTask } from "../../modules/TaskDataManager";
+import { updateTask, getUserTasks, deleteTask } from "../../modules/TaskDataManager";
 
 export const TaskList = () => {
 
@@ -9,21 +9,37 @@ export const TaskList = () => {
     
     const [tasks, setTasks] = useState([]);
 
-    const getTasks = () => {
-        return getUserTasks(currentUser).then(tasksFromAPI => {
-            setTasks(tasksFromAPI)
+    const getCurrentTasks = () => {
+        return getUserTasks(currentUser)
+        .then(currentTasks => {
+            let incompleteTasks = currentTasks.filter(task => task.taskComplete === false)
+            setTasks(incompleteTasks)
         })
     }
 
     const handleDeleteTasks = id => {
         deleteTask(id)
-        .then(() => getAllTasks().then(setTasks));
+        .then(() => getCurrentTasks());
+    }
+
+    const handleUpdateTask = (task) => {
+        let completeTask = {...task}
+        const checkedTask = {
+            id: completeTask.id,
+            task: completeTask.task,
+            userId: currentUser,
+            completionDate: completeTask.completionDate,
+            taskComplete: true
+        }
+        updateTask(checkedTask)
+        .then(() => getCurrentTasks())
+
     }
 
     const history = useHistory();
 
     useEffect(() => {
-        getTasks();
+        getCurrentTasks();
     }, [])
 
     return (
@@ -37,7 +53,7 @@ export const TaskList = () => {
             </section>
         <div className="container-cards">
             {tasks.map(task =>
-                <TaskCard key={task.id} task={task} handleDeleteTasks={handleDeleteTasks} />
+                <TaskCard key={task.id} task={task} handleDeleteTasks={handleDeleteTasks} handleUpdateTask={handleUpdateTask} />
                 )}
         </div>
         </>
