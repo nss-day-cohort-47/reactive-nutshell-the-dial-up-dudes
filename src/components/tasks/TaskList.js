@@ -32,7 +32,7 @@ export const TaskList = () => {
             taskComplete: true
         }
         updateTask(checkedTask)
-        .then(() => getCurrentTasks)
+        .then(() => getCurrentTasks())
 
     }
 
