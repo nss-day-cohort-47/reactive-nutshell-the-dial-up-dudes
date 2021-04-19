@@ -46,10 +46,10 @@ export const MessageSend = ({ getMessages, userId }) => {
       const privateDM = (
         getAllUsers()
           .then(allUsers => {
-            allUsers.map(user => {
+            allUsers.filter(user => {
               if (lowerCaseMessage.includes(`@${ user.name.toLowerCase() }`)) {
                 recId = user.id
-              } if (recId !== undefined) return recId
+              } return recId
             })
           }).then(() => {
             return recId
