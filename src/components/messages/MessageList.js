@@ -1,23 +1,39 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, Route } from 'react-router-dom'
-import { deleteMessage, getAllMessages, getUserMessages } from '../../modules/MessageDataManager'
-import { MessageCard } from './MessageCard'
+import { Route } from 'react-router-dom'
+import { deleteMessage, getAllMessages } from '../../modules/MessageDataManager'
 import { MessageSend } from "./MessageSend"
 import { MessageEdit } from './MessageEdit'
+import { MessageCard } from './MessageCard'
 
 export const MessageList = () => {
 
   const [ messages, setMessages ] = useState([])
-  const [ isLoading, setIsLoading ] = useState(true);
-  const history = useHistory()
   // gets logged in user's ID - we'll use this later
   const currentUserId = JSON.parse(sessionStorage.getItem("nutshell_user"))
-  // gets all messages and displays on the DOM. You need to invoke this every time you want to refresh your data without refreshing the page. 
+  const userMessage = [ ...messages ]
+
+  // Get all messages and then filter them. We only want 
+  // public messages (undefined recID), messages from current user, 
+  // or messages sent to current user (recID = current user ID)
+  const messageSorter3000 = () => {
+    const messageSort = getAllMessages().then(results =>
+      results.filter(oneMessage => {
+        if (oneMessage.receiverId === undefined || oneMessage.receiverId === currentUserId || oneMessage.userId === currentUserId) {
+          return oneMessage
+        }
+      })).then(results => {
+        return results
+      })
+    return messageSort
+  }
+
+  // Invoke message sort function and set messages to DOM.
   const getMessages = () => {
-    return getAllMessages().then(message => {
+    return messageSorter3000().then(message => {
       setMessages(message)
     })
   }
+
   // This looks for incoming messages and then displays them for you to read.
   useEffect(() => {
     getMessages()
@@ -25,7 +41,7 @@ export const MessageList = () => {
   // We aren't using this yet, but it will allow you to delete your messages if you you have any ragrats. 
   const handleDeleteMessage = (id) => {
     deleteMessage(id)
-      .then(() => getAllMessages().then(setMessages))
+      .then(() => messageSorter3000().then(setMessages))
   }
   // Checks to see if a user is the logged in user, and returns a boolean.
   const fromUser = (message) => {
@@ -39,12 +55,13 @@ export const MessageList = () => {
     <>
       <section className='messages__content'>
         <div className='message__content-container'>
-          { messages.map(message =>
-            <MessageCard
+          { userMessage.map(message =>
+            < MessageCard
               key={ message.id }
               message={ message }
-              fromUser={ fromUser(message) }
+              fromUser={ fromUser }
               handleDeleteMessage={ handleDeleteMessage }
+              currentUserId={ currentUserId }
             />) }
         </div>
       </section>

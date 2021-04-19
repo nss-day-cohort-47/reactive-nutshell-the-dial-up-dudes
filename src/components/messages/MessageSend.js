@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { getAllMessages, writeMessage, getAllUsers } from '../../modules/MessageDataManager'
+import { writeMessage, getAllUsers } from '../../modules/MessageDataManager'
 import './Message.css'
 
 // Those things in between the parenthesis and curly braces are props. They've been passed from our parent element. Pretty neat!
@@ -14,8 +14,6 @@ export const MessageSend = ({ getMessages, userId }) => {
     receiverId: '',
     timestamp: ''
   })
-
-
 
   const [ isLoading, setIsLoading ] = useState(false)
 
@@ -48,10 +46,10 @@ export const MessageSend = ({ getMessages, userId }) => {
       const privateDM = (
         getAllUsers()
           .then(allUsers => {
-            allUsers.map(user => {
+            allUsers.filter(user => {
               if (lowerCaseMessage.includes(`@${ user.name.toLowerCase() }`)) {
                 recId = user.id
-              } if (recId !== undefined) return recId
+              } return recId
             })
           }).then(() => {
             return recId

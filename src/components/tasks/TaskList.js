@@ -4,10 +4,13 @@ import { TaskCard } from './TaskCard';
 import { getAllTasks, getUserTasks, deleteTask } from "../../modules/TaskDataManager";
 
 export const TaskList = () => {
+
+    const currentUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
+    
     const [tasks, setTasks] = useState([]);
 
     const getTasks = () => {
-        return getAllTasks().then(tasksFromAPI => {
+        return getUserTasks(currentUser).then(tasksFromAPI => {
             setTasks(tasksFromAPI)
         })
     }
