@@ -66,7 +66,7 @@ export const EventForm = () => {
 					<input type="text" id="location" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event Location" value={event.location} />
 				</div>
 			</fieldset>
-			<button className="btn btn-primary"
+			<button className="btn-primary"
 				onClick={handleClickSaveEvent}>
 				Save Event
           </button>

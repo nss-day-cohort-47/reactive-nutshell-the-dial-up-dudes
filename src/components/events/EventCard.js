@@ -13,9 +13,9 @@ export const EventCard = ({ event, handleDeleteEvent }) => {
           </span></h3>
           <p>Date: {event.date}</p>
           <p>Location: {event.location}</p>
-          <button type="button" onClick={() => handleDeleteEvent(event.id)}>Delete</button>
-          <button type="button" onClick={() => (updateEvent)}>Edit</button>
-          <button type="button" >Show Weather</button>
+          <button type="button" className="btn-primary" onClick={() => handleDeleteEvent(event.id)}>Delete</button>
+          <button type="button" className="btn-primary" onClick={() => (updateEvent)}>Edit</button>
+          <button type="button" className="btn-primary" >Show Weather</button>
         </div>
       </div>
     );
