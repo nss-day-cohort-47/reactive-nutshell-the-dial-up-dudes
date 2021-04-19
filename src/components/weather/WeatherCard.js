@@ -1,18 +1,23 @@
 import React from 'react'
+let currentCity;
 
-export const WeatherCard = ({ weather }) => {
-
+export const WeatherCard = ({ weather, city }) => {
+  console.log('city', city)
   const timeConverter = (epoch) => {
-    let humanDate = new Date(epoch).toISOString()
+    let humanDate = new Date(epoch * 1000).toDateString()
     return humanDate;
   }
-
+  if (city.length === 0) {
+    currentCity = 'Nashville'
+  } else {
+    currentCity = city
+  }
   return (
     <div className="daily__weather">
-      <h3>The Weather</h3>
-      <h3> { weather?.dt } </h3>
-      <p> Hi: { weather?.temp?.max }&deg;  Lo: { weather?.temp?.min }&deg;</p>
-      {/* <p> Conditions: { forecast?.weather[ 0 ]?.description } </p> */ }
+      <h3>Weather for { currentCity }</h3>
+      <h4> { timeConverter(weather?.dt) } </h4>
+      <p> Hi: { weather?.temp?.max }&deg; / Lo: { weather?.temp?.min }&deg;</p>
+      <p> Current Conditions: { weather?.weather[ 0 ]?.description } </p>
     </div>
   )
 }

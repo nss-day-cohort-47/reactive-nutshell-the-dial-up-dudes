@@ -9,8 +9,9 @@ export const EventList = () => {
   const [ events, setEvents ] = useState([]);
   const history = useHistory();
 
-  // TODO Need to fetch Weather and set to state for Nashville. Then need to enable a button to check the weather based on an event Location.
+  // TODO Alex Dudley: Need to fetch Weather and set to state for Nashville. Then need to enable a button to check the weather based on an event Location.
   const [ weather, setWeather ] = useState([])
+  const [ city, setCity ] = useState([])
 
   const getLocalWeather = () => {
     getCoords('Nashville')
@@ -18,11 +19,21 @@ export const EventList = () => {
       .then(res => setWeather(res))
   }
 
+  let currentCity;
+
+  const getEventWeather = (city) => {
+    setCity(city)
+    getCoords(city)
+      .then(res => getWeather(res.lat, res.long))
+      .then(res => setWeather(res))
+
+  }
+
   useEffect(() => {
     getLocalWeather()
   }, [])
 
-  console.log('weather', weather)
+  // TODO end weather ===========================================
 
   const getEvents = () => {
     return getAllEvents().then(EventsFromAPI => {
@@ -39,18 +50,15 @@ export const EventList = () => {
     getEvents();
   }, []);
 
-  // getCoords('Nashville')
-  //   .then(res => getWeather(res.lat, res.long))
-  //   .then(res => console.log('weather forecast', res[ 0 ]))
 
-  // getWeather(lat, long)
-  //   .then(res => console.log('weather', res))
 
   return (
     <>
       <section className='weather__container'>
         { <WeatherCard
-          weather={ }
+          weather={ weather[ 0 ] }
+          city={ city }
+
         /> }
       </section>
       <section className="section-content">
@@ -65,7 +73,9 @@ export const EventList = () => {
           <EventCard
             key={ event.id }
             event={ event }
-            handleDeleteEvent={ handleDeleteEvent } />) }
+            getEventWeather={ getEventWeather }
+            handleDeleteEvent={ handleDeleteEvent } />)
+        }
       </div>
     </>
   );
