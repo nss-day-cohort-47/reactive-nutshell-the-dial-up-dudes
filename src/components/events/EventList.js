@@ -19,8 +19,6 @@ export const EventList = () => {
       .then(res => setWeather(res))
   }
 
-  let currentCity;
-
   const getEventWeather = (city) => {
     setCity(city)
     getCoords(city)

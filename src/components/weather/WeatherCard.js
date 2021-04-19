@@ -17,7 +17,7 @@ export const WeatherCard = ({ weather, city }) => {
       <h3>Weather for { currentCity }</h3>
       <h4> { timeConverter(weather?.dt) } </h4>
       <p> Hi: { weather?.temp?.max }&deg; / Lo: { weather?.temp?.min }&deg;</p>
-      <p> Current Conditions: { weather?.weather[ 0 ]?.description } </p>
+      <p>  { weather?.weather[ 0 ]?.description } </p>
     </div>
   )
 }
