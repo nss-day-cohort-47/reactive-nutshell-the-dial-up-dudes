@@ -10,7 +10,7 @@ export const EventEditForm = () => {
     const {eventId} = useParams();
     const history = useHistory();
 
-    const handleFieldChange = evt => {
+    const handleFieldChange = (evt) => {
         const stateToChange = { ...event };
         stateToChange[evt.target.id] = evt.target.value;
         setEvent(stateToChange);
@@ -19,7 +19,7 @@ export const EventEditForm = () => {
     const updateExistingEvent = (evt) => {
         evt.preventDefault()
         setIsLoading(true);
-
+//
         const editedEvent = {
             name: event.name,
             date: event.date,
