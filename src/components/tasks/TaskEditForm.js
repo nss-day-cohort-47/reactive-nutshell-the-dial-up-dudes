@@ -56,11 +56,11 @@ export const TaskEditForm = () => {
                     <input type="date" required className="form-control" onChange={handleFieldChange} id="completionDate" value={task.completionDate} />
                 </div>
                 <Link to={`/tasks/`}>
-                    <button>Return</button>
+                    <button className="btn-primary">Return</button>
                 </Link>
 
                 <div className="alignRight">
-                    <button type="button" disabled={isLoading} onClick={updateExistingTask} className="btn btn-primary">Submit</button>
+                    <button type="button" disabled={isLoading} onClick={updateExistingTask} className="btn-primary">Submit</button>
                 </div>
             </fieldset>
         </form>

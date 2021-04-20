@@ -64,7 +64,7 @@ export const TaskForm = () => {
                 </div>
             </fieldset>
             <Link to={`/tasks/`}>
-                <button>Return</button>
+                <button className="btn-primary">Return</button>
             </Link>
             <button className="btn btn-primary" onClick={handleClickSaveTask}>Save Task</button>
             </form>
