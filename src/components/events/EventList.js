@@ -1,6 +1,9 @@
+// Abbey Royse
+// This component is what displays all the current events in a list on a single page together
+
 import React, { useState, useEffect } from 'react';
 import { EventCard } from './EventCard';
-import { getAllEvents, getEventById, deleteEvent } from '../../modules/EventDataManager';
+import { getAllEvents, deleteEvent } from '../../modules/EventDataManager';
 import { useHistory } from 'react-router';
 import { getCoords, getWeather } from '../../modules/WeatherDataManager';
 import { WeatherCard } from '../weather/WeatherCard';
@@ -30,8 +33,6 @@ export const EventList = () => {
   useEffect(() => {
     getLocalWeather()
   }, [])
-
-  // TODO end weather ===========================================
 
   const getEvents = () => {
     return getAllEvents().then(EventsFromAPI => {

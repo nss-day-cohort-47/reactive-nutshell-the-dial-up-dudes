@@ -1,3 +1,6 @@
+// Abbey Royse
+// This module contains the function declarations necessary to making the whole events page work
+
 const remoteURL = "http://localhost:8088"
 
 export const getEventById = (id) => {
@@ -26,7 +29,7 @@ export const deleteEvent = (id) => {
     }).then(response => response.json())
   }
 
- /* export const updateEvent = (editedEvent) => {
+  export const updateEvent = (editedEvent) => {
     return fetch(`${remoteURL}/events/${editedEvent.id}`, {
       method: "PUT",
       headers: {
@@ -34,4 +37,4 @@ export const deleteEvent = (id) => {
       },
       body: JSON.stringify(editedEvent)
     }).then(data => data.json());
-  }*/
+  }
