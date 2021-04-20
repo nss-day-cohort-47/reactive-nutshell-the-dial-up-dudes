@@ -16,6 +16,7 @@ export const EventCard = ({ event, handleDeleteEvent, getEventWeather }) => {
         <p>Date: { event.date }</p>
         <p>Location: { event.location }</p>
         <button type="button" onClick={ () => handleDeleteEvent(event.id) }>Delete</button>
+        <button type="button" className="btn-primary" >Edit</button>
         <button className='btn-primary' type='button' onClick={ () => getEventWeather(event.location) } >Get Weather</button>
       </div>
     </div>
