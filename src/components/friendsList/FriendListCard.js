@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import "./FriendListCard.css";
 
 export const FriendListCard = ({ friend, handleDeleteFriend }) => {
     return (
@@ -7,7 +8,7 @@ export const FriendListCard = ({ friend, handleDeleteFriend }) => {
            <img src={friend.user?.image} alt="friend"/>
                 <h3 className="friend__name">Name: {friend.user?.name}</h3>
                 
-                <button type="button" onClick={() =>
+                <button type="primary btn" onClick={() =>
                 handleDeleteFriend(friend.id)}>See ya later!</button>
             </div>
         </div>
