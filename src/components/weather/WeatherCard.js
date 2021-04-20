@@ -2,7 +2,7 @@ import React from 'react'
 let currentCity;
 
 export const WeatherCard = ({ weather, city }) => {
-  console.log('city', city)
+
   const timeConverter = (epoch) => {
     let humanDate = new Date(epoch * 1000).toDateString()
     return humanDate;
