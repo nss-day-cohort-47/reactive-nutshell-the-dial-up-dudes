@@ -23,6 +23,7 @@
 .message__card {
   display: flex;
   flex-direction: column;
+  background-color: #FFFBF4;
 }
 
 .message__right {

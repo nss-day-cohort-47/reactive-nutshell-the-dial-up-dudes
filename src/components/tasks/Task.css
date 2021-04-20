@@ -58,3 +58,10 @@
   .card button:hover {
     background-color: darkblue;
   }
+.section-content{
+    background-color:#FFFBF4;
+}
+
+.cards{
+    background-color: #FFFBF4;
+}

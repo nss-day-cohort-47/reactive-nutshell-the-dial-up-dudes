@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./Task.css"
+import "./Task.css";
 
 
 export const TaskCard = ({task, handleDeleteTasks, handleUpdateTask}) => {
