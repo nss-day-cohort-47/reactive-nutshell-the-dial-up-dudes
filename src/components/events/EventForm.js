@@ -1,3 +1,7 @@
+// Abbey Royse
+// This component contains code that displays a form when a user wants to create a new event
+// empty fields for name, date, and location display, along with a save button
+
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { addEvent } from '../../modules/EventDataManager';

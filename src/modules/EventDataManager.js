@@ -1,3 +1,6 @@
+// Abbey Royse
+// This module contains the function declarations necessary to making the whole events page work
+
 const remoteURL = "http://localhost:8088"
 
 export const getEventById = (id) => {

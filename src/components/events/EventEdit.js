@@ -1,3 +1,6 @@
+// Abbey Royse
+// (not working) this component is supposed to display a form where the user can edit an event they've created
+
 import React, { useState, useEffect } from "react" 
 import { updateEvent, getEventById } from "../../modules/EventDataManager"
 import { useHistory, useParams } from "react-router"
@@ -31,20 +34,27 @@ export const EventEditForm = () => {
             date: event.date,
             location: event.location
         };
-    // 
+    // a promise is something that will be resolved or rejected later on in the code
+    // used to hook up a handler
+    // history.push pushes a new entry onto the history stack
+    // the new update is the new entry in this case
         updateEvent(editedEvent)
             .then(() => history.push("/events")
         )
     }
 
+    // here, react is being told that the component needs to do something after render
+    // in this case, it needs to return the newest version of the event. the edited version
     useEffect(() => {
         getEventById(eventId)
         .then(event => {
             setEvent(event);
             setIsLoading(false);
         });
-    }, []);
+    }, [eventId]);
 
+
+    // simply, this is what the edit form will look like
     return (
         <>
           <form>

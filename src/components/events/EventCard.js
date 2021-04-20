@@ -1,3 +1,7 @@
+// Abbey Royse
+// This component is what displays on each individual event card
+// delete button, edit button, and show weather button are part of this
+
 import React from "react"
 import { updateEvent } from "../../modules/EventDataManager";
 import "./Event.css"
