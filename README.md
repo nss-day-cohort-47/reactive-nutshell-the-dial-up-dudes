@@ -1,4 +1,30 @@
-# Reactive Nutshell: The Information Dashboard
+# Reactive Nutshell: The Dial Up Dudes
+
+We are the Dial Up Dudes! 
+[Alex Dudley](https://github.com/dudley-codes) 
+[Autumn Fotopoulos](https://github.com/AutumnFoto)
+[Nick Patton](https://github.com/NSPatton)
+[Abbey Royse](https://github.com/abbeyroyse13) 
+
+We're students at Nashville Software School and are a part of Cohort 47. 
+This is our version of the Reactive Nutshell App. 
+The Reactive Nutshell is an app that organizes and displays an individual user's articles, tasks, events, messages, and friends. 
+
+** What we used for this project ** 
+- JSON Server
+- React
+- react-router-dom
+
+** How to open this project **
+1. Git clone it onto your local machine
+2. In the API directory, run json-server -p 8088 -w database.json
+3. In the src directory, run npm start
+
+** Our wireframe and ERD **
+[Wireframe:](https://miro.com/app/board/o9J_lKAPB1M=/)
+[ERD:](https://dbdiagram.io/d/6074f0dfb6aeb3052d8fc9a1)
+
+## Reactive Nutshell: The Information Dashboard
 
 ## Setup: Follow these steps exactly
 
